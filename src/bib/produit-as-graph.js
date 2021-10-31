@@ -17,6 +17,10 @@ import sensOuvertureOb from "../mega-model/sens-ouverture-ob/sens-ouverture-ob"
 import sensOuverture from "../mega-model/sens-ouverture-ob/sens-ouverture"
 import oscilloBattant from "../mega-model/sens-ouverture-ob/oscillo-battant"
 
+import vitrage from "./vitrage-petit-bois/vitrage"
+import petitBois from "./vitrage-petit-bois/petit-bois"
+import vitragePetitBois from "./vitrage-petit-bois/vitrage-petit-bois"
+
 
 export default function () {
     graph.addNode('produit', {
@@ -51,6 +55,10 @@ export default function () {
     graph.addNode('sensOuverture',sensOuverture);
     graph.addNode('oscilloBattant',oscilloBattant);
     graph.addNode('sensOuvertureOb',sensOuvertureOb);
+
+    graph.addNode('vitrage', vitrage);
+    graph.addNode('petitBois',petitBois);
+    graph.addNode('vitragePetitBois',vitragePetitBois);
 
 
     graph.fullTraversal();

@@ -217,6 +217,9 @@ export default {
                                             <elcia-option nodeName="sensOuverture"></elcia-option>
                                             <elcia-option nodeName="oscilloBattant"></elcia-option>
                                         </elcia-option-group>
+                                        <elcia-option-group nodeName="vitragePetitBois">
+                                            <elcia-option nodeName="vitrage"></elcia-option>
+                                        </elcia-option-group>
                                         
                                     </div>
                                 </div>

@@ -13,6 +13,21 @@ export default {
     computed: {
         displayPrice() {
             return new Intl.NumberFormat(this.$i18n.locale, { style: 'currency', currency: 'EUR' }).format(this.nodeState.optionPrice)
+        },
+        groupedOptionValues() {
+            var optionValueGroups = [];
+            var currGroup = [];
+            var currGroupName = this.nodeState.optionValues[0].optionValueGroupName;
+            for (var i = 0; i < this.nodeState.optionValues.length; i++) {
+                if (this.nodeState.optionValues[i].optionValueGroupName !== currGroupName) {
+                    optionValueGroups.push(currGroup);
+                    currGroup = [];
+                    currGroupName = this.nodeState.optionValues[i].optionValueGroupName;
+                }
+                currGroup.push(this.nodeState.optionValues[i])
+            }
+            optionValueGroups.push(currGroup);
+            return optionValueGroups;
         }
     },
     methods: {
@@ -52,35 +67,43 @@ export default {
                     {{ $t("retourConfigurateur") }}
                 </div>
                 <div class="popup-content">
-                    <h2>{{$t(nodeState.optionName)}}</h2>
+                    <h2>{{ $t(nodeState.optionName) }}</h2>
 
                     <div class="lookup-groups">
-                        <div class="image-selection in-popup">
-                            <div
-                                v-for="(optionValue, index) in nodeState.optionValues"
-                                class="item"
-                                @click="selectItem(index)"
-                            >
-                                <div class="content">
-                                    <button disabled>
-                                        <div class="image">
-                                            <div
-                                                class="lego-image"
-                                                :data-src="optionValue.imageUrl"
-                                                :style="'background-image: url(' + optionValue.imageUrl + ');'"
-                                            ></div>
-                                        </div>
-                                        <div class="text">
-                                            <p class="icon">
-                                                <label for="radio3"></label>
-                                            </p>
+                        <template v-for="(group, index) in groupedOptionValues">
+                            <h3
+                                v-if="group[0].optionValueGroupName"
+                            >--------------&nbsp;&nbsp;&nbsp;{{ $t(group[0].optionValueGroupName) }}&nbsp;&nbsp;&nbsp;>>>>>>>>>>></h3>
+                            <div class="image-selection in-popup">
+                                <div
+                                    v-for="(optionValue, index) in group"
+                                    class="item"
+                                    @click="selectItem(index)"
+                                >
+                                    <div class="content">
+                                        <button disabled>
+                                            <div class="image">
+                                                <div
+                                                    class="lego-image"
+                                                    :data-src="optionValue.imageUrl"
+                                                    :style="'background-image: url(' + optionValue.imageUrl + ');'"
+                                                ></div>
+                                            </div>
+                                            <div class="text">
+                                                <p class="icon">
+                                                    <label for="radio3"></label>
+                                                </p>
 
-                                            <p>{{ $t(optionValue.valueName) }}</p>
-                                        </div>
-                                    </button>
+                                                <p>{{ $t(optionValue.valueName) }}</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <template
+                                        v-if="optionValue.optionValueGroupName != nodeState.optionValues[index - 1]"
+                                    ></template>
                                 </div>
                             </div>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -95,7 +118,7 @@ export default {
 
 .fade-enter-active.mask,
 .fade-leave-active.mask {
-    transition: opacity .7s;
+    transition: opacity 0.7s;
 }
 .fade-enter.mask,
 .fade-leave-to.mask {

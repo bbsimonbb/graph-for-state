@@ -1,12 +1,17 @@
 <script>
+import inputWhenActive from './reusable/input-when-active.vue'
 export default {
-    inject: ['bib','bibState'],
-    mounted() {
-        console.log("cobber");
-    },
+    inject: ['bib', 'bibState'],
+    components: { 'input-when-active': inputWhenActive },
     methods: {
         setX: function (event) {
             this.bib.nodes.dimensions.setX(event.target.value);
+        },
+        setY: function (event) {
+            this.bib.nodes.dimensions.setY(event.target.value);
+        },
+        setQuantite: function (event) {
+            this.bib.nodes.dimensions.setQuantite(event.target.value);
         }
     }
 }
@@ -16,7 +21,7 @@ export default {
         <div class="accordion-item-heading">
             <div class="accordion-item-title">
                 <i class="minus-square"></i>
-                <span>Dimensions et quantité</span>
+                <span>{{$t("dimensionsEtQuantité")}}</span>
             </div>
 
             <div class="accordion-item-title-right"></div>
@@ -27,16 +32,15 @@ export default {
             <div class="content">
                 <div class="selection">
                     <div class="col-1">
-                        <span>Dimensions</span>
+                        <span>{{$t("dimensions")}}</span>
                     </div>
                     <div class="col-2">
                         <div>
-                            <span>Hauteur</span>
-                            <strong>{{ bibState.dimensions.x }} mm</strong>
-                            <input type="text" :value="bibState.dimensions.x" @change="setX" />
+                            <span>{{$t("hauteur")}}</span>
+                            <input-when-active :value="bibState.dimensions.x" @input="setX" />
                             <span class="car-sep">-</span>
-                            <span>Largeur</span>
-                            <strong>{{bibState.dimensions.y}}</strong>
+                            <span>{{$t("largeur")}}</span>
+                            <strong>{{ bibState.dimensions.y }}</strong>
                         </div>
                     </div>
                     <div class="col-3"></div>
@@ -51,7 +55,7 @@ export default {
             <div class="content">
                 <div class="selection">
                     <div class="col-1">
-                        <span>Quantité</span>
+                        <span>{{$t("quantité")}}</span>
                     </div>
                     <div class="col-2">
                         <div>

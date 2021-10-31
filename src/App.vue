@@ -1,19 +1,26 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import produit from './bib/ProduitEnChiffrage.vue'
+<script>
+
+import produit from './couche-ui/produit-en-chiffrage.vue'
+import produitAsGraph from './bib/produit-as-graph'
+//import graph from './graph/graph.js'
+
+
+var graph = produitAsGraph();
+
+
+
+export default {
+    components:{
+        'produit': produit
+    },
+    provide: {
+        bib: graph,
+        bibState: graph.output
+    }
+}
 </script>
 
 <template>
 <produit></produit>
  </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>

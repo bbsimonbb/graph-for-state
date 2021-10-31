@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "object-observer": "^4.3.2",
-    "vue": "^3.2.6"
+    "vue": "^3.2.6",
+    "vue-i18n": "^9.2.0-beta.16"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.6.0",

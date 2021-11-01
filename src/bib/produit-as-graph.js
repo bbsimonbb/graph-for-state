@@ -21,6 +21,9 @@ import vitrage from "./vitrage-petit-bois/vitrage"
 import petitBois from "./vitrage-petit-bois/petit-bois"
 import vitragePetitBois from "./vitrage-petit-bois/vitrage-petit-bois"
 
+import listeOptionsChoisis from "../mega-model/ticket-caisse/liste-options-choisis"
+
+
 
 export default function () {
     graph.addNode('produit', {
@@ -60,6 +63,8 @@ export default function () {
     graph.addNode('petitBois',petitBois);
     graph.addNode('vitragePetitBois',vitragePetitBois);
 
+    // reporting nodes added last
+    graph.addNode('listeOptionsChoisis', listeOptionsChoisis);
 
     graph.fullTraversal();
     return graph;

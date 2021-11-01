@@ -66,4 +66,41 @@ export default {
     oscilloBattant:"Tilt and turn",
     oscilloBattant1Vantail: "Tilt and turn 1 casement",
     aucunOscilloBattant:"No tilt and turn",
+
+    
+    vitragePetitBois: "Glazing / glazing bars",
+    vitrage: "Glazing",
+    doubleVitrage: "DOUBLE GLAZING",
+    doubleVitrageVIR416WarmEdgeArgon4: "Double glazing VIR 4/16 Warm Edge + argon/4",
+    doubleVitrageVIR414WarmEdgeArgon6: "Double glazing VIR 4/14 Warm Edge + argon/6",
+    doubleVitrageVIR620WarmEdgeArgon6: "Double glazing VIR 6/20 Warm Edge + argon/6",
+
+    doubleVitrageAutoNettoyant: "SELF-CLEANING DOUBLE GLAZING",
+    doubleVitrageVIR416WarmEdgeArgon4Autonettoyant: "Double glazing VIR 4/16 Warm Edge + argon/4 autonettoyant",
+    doubleVitrageVIR414WarmEdgeArgon6Autonettoyant: "Double glazing VIR 4/14 Warm Edge + argon/6 autonettoyant",
+    doubleVitrageVIR44214WarmEdgeArgon442Autonettoyant: "Double glazing VIR 44.2/14 Warm Edge + argon/44.2 autonettoyant",
+
+    doubleVitrageAcoustique: "ACOUSTIC DOUBLE GLAZING",
+    doubleVitrageAcoustiqueVIR420WarmEdgeArgon8: "Acoustic double glazing: VIR 4/20 Warm Edge + argon/8",
+    doubleVitrageAcoustiqueVIR1014WarmEdgeArgon441silence: "Acoustic double glazing: VIR 10/14 Warm Edge + argon/44.1 silence",
+
+    doubleVitrageSecurité: "HIGH-SECURITY DOUBLE GLAZING",
+    doubleVitrageScuritVIR418WarmEdgeArgon442: "Security double glazing: VIR 4/18 Warm Edge + argon/44.2",
+    doubleVitrageScuritVIR44218WarmEdgeArgon4: "Security double glazing: VIR 44.2/18 Warm Edge + argon/4",
+    doubleVitrageScuritVIR44214WarmEdgeArgon442: "Security double glazing: VIR 44.2/14 Warm Edge + argon/44.2",
+
+
+    remplissagePlein: "PANELS",
+    panneauMousseDe24mm: "Foam panel 24mm",
+    panneauRainuréDe31mm:"Grooved panel 31mm",
+
+    petitBois:"Type glazing bars",
+    aucun: "None",
+    petitsBoisIncorporsMonocoloreBlanc901626x8: "Integrated glazing bars, white 9016 26 x 8",
+    petitsBoisIncorporsMonocoloreRAL26x8:"Integrated glazing bars single colour RAL 26 x 8",
+    petitsBoisIncorporsBlancIntrieuretRALExtrieur26x8:"Integrated glazing bars white inside RAL outside 26 x 8",
+    petitsBoisIncorporsLaiton10x8: "Integrated glazing bars, brass 10 x 8",
+    PetitsBoisIncorporsTitane10x8:"Integrated glazing bars, titanium 10 x 8",
+    petitsBoisRapportsDe45mm:"Mortised glazing bars de 45 mm",
+    petitsBoisRapportsDe26mm:"Mortised glazing bars de 26 mm"
 }

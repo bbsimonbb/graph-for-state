@@ -10,7 +10,7 @@ const i18n = createI18n({
     messages, // set locale messages
 })
 const app = createApp(App);
-
+app.config.globalProperties.window = window
 app.use(i18n);
 app.use(produitAsGraph);
 app.mount('#app')

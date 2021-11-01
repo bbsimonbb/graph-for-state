@@ -65,13 +65,13 @@ export default {
             },
             {
                 optionValueGroupName: "remplissagePlein",
-                valueName: "",
-                imageUrl: "/static/images/"
+                valueName: "panneauMousseDe24mm",
+                imageUrl: "/static/images/ico_Panneau%20mousse.JPG"
             },
             {
                 optionValueGroupName: "remplissagePlein",
-                valueName: "",
-                imageUrl: "/static/images/"
+                valueName: "panneauRainuréDe31mm",
+                imageUrl: "/static/images/ico_Panneau%20rainure.JPG"
             },
 
             

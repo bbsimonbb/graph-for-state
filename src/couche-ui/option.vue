@@ -24,6 +24,7 @@ export default {
                     currGroup = [];
                     currGroupName = this.nodeState.optionValues[i].optionValueGroupName;
                 }
+                this.nodeState.optionValues[i].originalIndex = i;
                 currGroup.push(this.nodeState.optionValues[i])
             }
             optionValueGroups.push(currGroup);
@@ -34,6 +35,9 @@ export default {
         selectItem(index) {
             this.node.selectItem(index);
             this.enEdition = false;
+        },
+        positionPopupOnOpen(){
+            return window.scrollY + 50
         }
     }
 }
@@ -60,7 +64,7 @@ export default {
         <div v-if="enEdition" class="mask"></div>
     </transition>
     <div class="popup v2" v-if="enEdition">
-        <div class="layout fix-overflow" data-addscrollposition="true" style="position:fixed">
+        <div class="layout fix-overflow" :style="'top:' + positionPopupOnOpen() + 'px;'">
             <div class="layout-inner">
                 <div class="popup-header" @click="enEdition = false">
                     <i class="caret-left"></i>
@@ -78,7 +82,7 @@ export default {
                                 <div
                                     v-for="(optionValue, index) in group"
                                     class="item"
-                                    @click="selectItem(index)"
+                                    @click="selectItem(optionValue.originalIndex)"
                                 >
                                     <div class="content">
                                         <button disabled>

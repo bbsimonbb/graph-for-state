@@ -90,6 +90,18 @@ export default {
 
 
     remplissagePlein: "REMPLISSAGE PLEIN",
+    panneauMousseDe24mm: "Panneau mousse de 24mm",
+    panneauRainuréDe31mm:"Panneau rainuré de 31mm",
+
+    petitBois:"Type petit bois",
+    aucun: "Aucun(e)",
+    petitsBoisIncorporsMonocoloreBlanc901626x8: "Petits-bois incorporés monocolore Blanc 9016 26 x 8",
+    petitsBoisIncorporsMonocoloreRAL26x8:"Petits-bois incorporés monocolore RAL 26 x 8",
+    petitsBoisIncorporsBlancIntrieuretRALExtrieur26x8:"Petits-bois incorporés blanc intérieur et RAL extérieur 26 x 8",
+    petitsBoisIncorporsLaiton10x8: "Petits-bois incorporés laiton 10 x 8",
+    PetitsBoisIncorporsTitane10x8:"Petits-bois incorporés titane 10 x 8",
+    petitsBoisRapportsDe45mm:"Petits-bois rapportés de 45 mm",
+    petitsBoisRapportsDe26mm:"Petits-bois rapportés de 26 mm"
 
 
 

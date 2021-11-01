@@ -219,6 +219,7 @@ export default {
                                         </elcia-option-group>
                                         <elcia-option-group nodeName="vitragePetitBois">
                                             <elcia-option nodeName="vitrage"></elcia-option>
+                                            <elcia-option nodeName="petitBois"></elcia-option>
                                         </elcia-option-group>
                                         
                                     </div>

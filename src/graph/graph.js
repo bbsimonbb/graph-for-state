@@ -1,6 +1,7 @@
 /* eslint-disable no-debugger */
 import { Observable } from '../../node_modules/object-observer/dist/object-observer.min.js';
 import { reactive, } from 'vue'
+import _ from 'lodash'
 
 export default {
     output: reactive({}),
@@ -13,6 +14,7 @@ export default {
     addNode(name, newNode) {
         newNode.$name = name;
         var me = this;
+        const myIndex = this.nodeNamesInOrderOfAddition.length;
         // check that all dependsOn are already added
         if (newNode.dependsOn && typeof (newNode.dependsOn) !== 'function')
             var dependenciesNotYetPresent = newNode.dependsOn.filter(val => !this.nodeNamesInOrderOfAddition.includes(val))
@@ -30,7 +32,7 @@ export default {
                     set(newValue) {
                         bValue = newValue;
                         // todo: we only need to recalculate downstream of the changed node.
-                        me.fullTraversal();
+                        me.fullTraversal(myIndex);
                     },
                     enumerable: true,
                     configurable: true
@@ -62,21 +64,20 @@ export default {
         //Object.defineProperty(this.output, name, {value: newNode.outputVal, configurable:true, enumerable:true, writable:true })
         //this.output[name] = newNode.outputVal;
 
-        // used to need Vue.set() here ????
-        this.output[name] = newNode.outputVal;
+        //this.output[name] = _.cloneDeep(newNode.outputVal);
+        this.output[name] = JSON.parse(JSON.stringify(newNode.outputVal));
 
         // for each node, we'll make a little object containing (the output of) that newNode's dependencies
 
         if (newNode.dependsOn) {
-            var dependsOnObject = {};
             if (typeof (newNode.dependsOn) !== 'function') {
                 // standard node, depends on a list of named nodes, already present.
-                newNode.dependsOn.forEach(dependency => dependsOnObject[dependency] = this.output[dependency]);
-                this.nodeDependencies[name] = dependsOnObject;
+                this.nodeDependencies[name] = newNode.dependsOn;
             } else {
                 // reporting node. dependsOn is a lambda to select nodes already present
+                // todo: shouldn't this be based on output, not the real nodes
                 const nodesArray = Object.entries(this.nodes);
-                this.nodeDependencies[name] = nodesArray.filter(newNode.dependsOn).map(aNode=>this.output[aNode[0]]);
+                this.nodeDependencies[name] = nodesArray.filter(newNode.dependsOn).map(aNode => aNode[0]);
             }
         }
 
@@ -88,7 +89,8 @@ export default {
         if (!node.isBeingTraversed) {
             // copy new val to output
             //Object.assign(this.output[nodeName], node.outputVal);
-            this.output[nodeName] = { ...node.outputVal };
+            //this.output[nodeName] = _.cloneDeep(node.outputVal);
+            this.output[nodeName] = JSON.parse(JSON.stringify(node.outputVal));
 
             // start traversing from node, if we're not already traversing
             this.fullTraversal(this.nodeNamesInOrderOfAddition.findIndex(el => el === nodeName))
@@ -115,14 +117,34 @@ export default {
             // if the function is present, call it, passing an object with the values of all dependencies
             if (this.nodes[currNode].onUpstreamChange) {
                 this.nodes[currNode].isBeingTraversed = true;
-                this.nodes[currNode].onUpstreamChange(this.nodeDependencies[currNode]);
+                var dependencies = null;
+                if (this.nodeDependencies[currNode]) {
+                    dependencies = {};
+                    for (var j = 0; j < this.nodeDependencies[currNode].length; j++) {
+                        Object.defineProperty(
+                            dependencies,
+                            this.nodeDependencies[currNode][j],
+                            { value: JSON.parse(JSON.stringify(this.output[this.nodeDependencies[currNode][j]])), writable: false }
+                        )
+                    }
+                    //this.nodes[currNode].nodeDependencies.forEach(d => Object.assign(dependencies, d, JSON.parse(JSON.stringify(this.output[d]))));//    [currNode].map(d=>JSON.parse(JSON.stringify(this.output[d])));
+                }
+                this.nodes[currNode].onUpstreamChange(dependencies);
+
+                // copy to output
+                if (typeof this.nodes[currNode].outputVal === "object")
+                    this.output[currNode] = Object.assign({}, this.nodes[currNode].outputVal)
+                else
+                    this.output[currNode] = this.nodes[currNode].outputVal
                 this.nodes[currNode].isBeingTraversed = false;
             }
-            // copy to output
-            if (typeof this.nodes[currNode].outputVal === "object")
-                this.output[currNode] = Object.assign({}, this.nodes[currNode].outputVal)
-            else
-                this.output[currNode] = this.nodes[currNode].outputVal
+            else if(!startingFrom){
+                // full full traversal. Copy everything to output
+                if (typeof this.nodes[currNode].outputVal === "object")
+                    this.output[currNode] = Object.assign({}, this.nodes[currNode].outputVal)
+                else
+                    this.output[currNode] = this.nodes[currNode].outputVal
+            }
         }
     }
 }

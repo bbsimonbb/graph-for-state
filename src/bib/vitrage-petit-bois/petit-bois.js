@@ -40,7 +40,6 @@ export default {
         defaultIndex: 0,
         selectedIndex: 0
     },
-    onUpstreamChange() { },
     selectItem(index) {
         this.outputVal.selectedIndex = index;
     }

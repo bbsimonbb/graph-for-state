@@ -11,6 +11,7 @@ const i18n = createI18n({
 })
 const app = createApp(App);
 app.config.globalProperties.window = window
+app.config.globalProperties.$eur = function(amount){return new Intl.NumberFormat(this.$i18n.locale, { style: 'currency', currency: 'EUR' }).format(amount)}
 app.use(i18n);
 app.use(produitAsGraph);
 app.mount('#app')

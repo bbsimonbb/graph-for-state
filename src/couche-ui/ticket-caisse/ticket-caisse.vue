@@ -6,7 +6,8 @@ export default {
  components:{
      'liste-options-choisis': listeOptionsChoisis,
      'conditions': conditionsVue
- }
+ },
+ inject:['bibState','bib']
 }
 </script>
 <template>
@@ -24,14 +25,14 @@ export default {
                             <i class="minus-square"></i>
                         </div>
                         <div>
-                            <strong>Fenêtre 2 vantaux</strong>
+                            <strong>{{$t(bibState.produit.name)}}</strong>
                             <div>
                                 <span>
-                                    <strong>1350</strong> mm
+                                    <strong>{{bibState.dimensions.y}}</strong> mm
                                 </span>
                                 <span>x</span>
                                 <span>
-                                    <strong>1400</strong> mm
+                                    <strong>{{bibState.dimensions.x}}</strong> mm
                                 </span>
                             </div>
                         </div>
@@ -49,7 +50,7 @@ export default {
                     <div class="accordion-item-title">
                         <i class="minus-square"></i>Conditions
                     </div>
-                    <span class="accordion-item-title-right">737,10 €</span>
+                    <span class="accordion-item-title-right">{{$eur(bibState.prixProduit.prixDeVente)}}</span>
                 </button>
                 <div class="accordion-item-content base-pricing-content">
                     <input
@@ -133,50 +134,28 @@ export default {
                                 type="submit"
                             ></button>
                             <div class="title">
-                                <span>Menuiseries POP</span>
-                                <input
-                                    id="PurchasePseudoRangeCode0"
-                                    name="Quotation.SummaryPricingModel.PurchasePricings[0].PseudoRangeCode"
-                                    type="hidden"
-                                    value="TONUS"
-                                />
-                                <input
-                                    id="Quotation_SummaryPricingModel_PurchasePricings_0__IsNetPrice"
-                                    name="Quotation.SummaryPricingModel.PurchasePricings[0].IsNetPrice"
-                                    type="hidden"
-                                    value="False"
-                                />
+                                <span>{{$t(bibState.gamme.optionValues[bibState.gamme.selectedIndex].valueName)}}</span>
                             </div>
                             <div class="content">
                                 <!-- Prix de base -->
                                 <div class="key-value">
                                     <div class="key">
-                                        <span>Prix tarif</span>
+                                        <span>{{$t("prixTarif")}}</span>
                                     </div>
                                     <div class="complement"></div>
                                     <div class="value">
-                                        <span>567,00 €</span>
+                                        <span>{{$eur(bibState.prixProduit.prixTarif)}}</span>
                                     </div>
                                 </div>
                                 <!-- Remise -->
                                 <div class="key-value">
                                     <div class="key">
-                                        <span>Remise</span>
+                                        <span>{{$t("remise")}}</span>
                                     </div>
                                     <div class="complement"></div>
-                                    <div class="value">
-                                        <input
-                                            class="purchaseDiscount"
-                                            data-btnchangediscountid="BtnChangeDiscount0"
-                                            data-forcedvalue
-                                            id="Quotation_SummaryPricingModel_PurchasePricings_0__ForcedDiscount"
-                                            name="Quotation.SummaryPricingModel.PurchasePricings[0].ForcedDiscount"
-                                            placeholder="35"
-                                            type="hidden"
-                                            value
-                                        />
+                                    <div class="value">  
                                         <div class="value">
-                                            <span>35 %</span>
+                                            <span>{{bibState.conditionsAchatVente.remise * 100}} %</span>
                                         </div>
                                     </div>
                                 </div>
@@ -185,11 +164,11 @@ export default {
                             <!-- Prix d'achat Unitaire -->
                             <div class="key-value">
                                 <div class="item">
-                                    <span>Prix d'achat</span>
+                                    <span>{{$t("prixDAchat")}}</span>
                                 </div>
                                 <div class="complement"></div>
                                 <div class="value">
-                                    <span>368,55 €</span>
+                                    <span>{{$eur(bibState.prixProduit.prixDAchat)}}</span>
                                 </div>
                             </div>
                         </div>
@@ -197,7 +176,7 @@ export default {
 
                     <div class="section">
                         <div class="title">
-                            <span>Vente</span>
+                            <span>{{$t("Vente")}}</span>
                         </div>
 
                         <div class="content">
@@ -211,72 +190,49 @@ export default {
                                 type="submit"
                             ></button>
                             <div class="title">
-                                <span>Menuiseries POP</span>
-                                <input
-                                    id="SalePseudoRangeCode0"
-                                    name="Quotation.SummaryPricingModel.SalePricings[0].PseudoRangeCode"
-                                    type="hidden"
-                                    value="TONUS"
-                                />
-                                <input
-                                    id="Quotation_SummaryPricingModel_SalePricings_0__IsNetPrice"
-                                    name="Quotation.SummaryPricingModel.SalePricings[0].IsNetPrice"
-                                    type="hidden"
-                                    value="False"
-                                />
+                                <span>{{$t(bibState.gamme.optionValues[bibState.gamme.selectedIndex].valueName)}}</span>
                             </div>
                             <div class="content">
                                 <div class="key-value">
                                     <div class="key">
-                                        <span>Prix d'achat</span>
+                                        <span>{{$t("prixDAchat")}}</span>
                                     </div>
                                     <div class="complement"></div>
                                     <div class="value">
-                                        <span>368,55 €</span>
+                                        <span>{{$eur(bibState.prixProduit.prixDAchat)}}</span>
                                     </div>
                                 </div>
 
                                 <!-- Coefficient -->
                                 <div class="key-value">
                                     <div class="key">
-                                        <span>Coefficient</span>
+                                        <span>{{$t("coefficient")}}</span>
                                     </div>
                                     <div class="complement"></div>
 
                                     <div class="value">
                                         <input
                                             class="saleCoefficient"
-                                            data-btnchangepricingid="BtnChangePricing0"
-                                            data-forcedvalue="2"
-                                            id="Quotation_SummaryPricingModel_SalePricings_0__ForcedCoefficient"
                                             maxlength="5"
-                                            name="Quotation.SummaryPricingModel.SalePricings[0].ForcedCoefficient"
-                                            placeholder="1823"
                                             type="text"
-                                            value="2"
+                                            :value="bibState.conditionsAchatVente.coefficientVente"
+                                            @input="bib.nodes.conditionsAchatVente.setCoefficient"
                                         />
                                     </div>
                                 </div>
                                 <div class="key-value">
                                     <div class="item"></div>
                                 </div>
-
-                                <input
-                                    id="Quotation_SummaryPricingModel_SalePricings_0__ImpactedItemsPricing"
-                                    name="Quotation.SummaryPricingModel.SalePricings[0].ImpactedItemsPricing"
-                                    type="hidden"
-                                    value
-                                />
                             </div>
 
                             <!-- Total Prix de vente -->
                             <div class="key-value">
                                 <div class="key">
-                                    <span>Prix de vente</span>
+                                    <span>{{$t("prixDeVente")}}</span>
                                 </div>
                                 <div class="complement"></div>
                                 <div class="value">
-                                    <span>737,10 €</span>
+                                    <span>{{$eur(bibState.prixProduit.prixDeVente)}}</span>
                                 </div>
                             </div>
                         </div>
@@ -312,24 +268,23 @@ export default {
                         ></button>
 
                         <div class="title">
-                            <span>Remise client</span>
+                            <span>{{$t("remiseClient")}}</span>
                         </div>
                         <div class="content">
                             <!-- Remise unitaire -->
                             <div class="key-value">
                                 <div class="key">
-                                    <span>Remise unitaire</span>
+                                    <span>{{$t("remiseUnitaire")}}</span>
                                 </div>
                                 <div class="value">
                                     <input
                                         class="saleMargin"
-                                        data-btnchangepricingid="BtnChangeCustomerSaleUnitaryDiscount"
-                                        data-forcedvalue
                                         id="Quotation_SummaryPricingModel_CustomerSaleModel_CustomerSaleUnitaryDiscountForcedValue"
                                         name="Quotation.SummaryPricingModel.CustomerSaleModel.CustomerSaleUnitaryDiscountForcedValue"
                                         placeholder="0"
                                         type="text"
-                                        value
+                                        :value="bibState.prixRemise.remiseUnitaire"
+                                        @input="bib.nodes.prixRemise.setRemiseUnitaire"
                                     />
                                     <span class="showPercent">€</span>
                                 </div>
@@ -337,18 +292,16 @@ export default {
                             <!-- Pourcentage de remise -->
                             <div class="key-value">
                                 <div class="key">
-                                    <span>Remise en %</span>
+                                    <span>{{$t("remisePct")}}</span>
                                 </div>
                                 <div class="value">
                                     <input
                                         class="saleMargin"
-                                        data-btnchangepricingid="BtnChangeCustomerSalePercentageDiscount"
-                                        data-forcedvalue
                                         id="Quotation_SummaryPricingModel_CustomerSaleModel_CustomerSalePercentageDiscountForcedValue"
-                                        name="Quotation.SummaryPricingModel.CustomerSaleModel.CustomerSalePercentageDiscountForcedValue"
                                         placeholder="0"
                                         type="text"
-                                        value
+                                        :value="bibState.prixRemise.remisePct * 100"
+                                        @input="bib.nodes.prixRemise.setRemisePct"
                                     />
                                     <span class="showPercent">%</span>
                                 </div>
@@ -356,16 +309,14 @@ export default {
                             <!-- Prix de vente client -->
                             <div class="key-value">
                                 <div class="item">
-                                    <span>Prix de vente client</span>
+                                    <span>{{$t("prixDeVenteClient")}}</span>
                                 </div>
                                 <div class="value">
                                     <input
                                         class="saleMargin"
-                                        data-btnchangepricingid="BtnChangeCustomerSalePrice"
-                                        data-forcedvalue
                                         id="Quotation_SummaryPricingModel_CustomerSaleModel_CustomerSalePriceForcedValue"
                                         name="Quotation.SummaryPricingModel.CustomerSaleModel.CustomerSalePriceForcedValue"
-                                        placeholder="737.1"
+                                        :placeholder="bibState.prixRemise.prixDeVenteClient"
                                         type="text"
                                         value
                                     />

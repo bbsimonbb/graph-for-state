@@ -12,20 +12,22 @@ export default {
     },
     computed: {
         displayPrice() {
-            return new Intl.NumberFormat(this.$i18n.locale, { style: 'currency', currency: 'EUR' }).format(this.nodeState.optionPrice)
+            return new Intl.NumberFormat(this.$i18n.locale, { style: 'currency', currency: 'EUR' }).format(this.bibState[this.nodeName].optionPrice)
         },
         groupedOptionValues() {
             var optionValueGroups = [];
             var currGroup = [];
-            var currGroupName = this.nodeState.optionValues[0].optionValueGroupName;
-            for (var i = 0; i < this.nodeState.optionValues.length; i++) {
-                if (this.nodeState.optionValues[i].optionValueGroupName !== currGroupName) {
+            var currGroupName = this.bibState[this.nodeName].optionValues[0].optionValueGroupName;
+            for (var i = 0; i < this.bibState[this.nodeName].optionValues.length; i++) {
+                if (this.bibState[this.nodeName].optionValues[i].optionValueGroupName !== currGroupName) {
                     optionValueGroups.push(currGroup);
                     currGroup = [];
-                    currGroupName = this.nodeState.optionValues[i].optionValueGroupName;
+                    currGroupName = this.bibState[this.nodeName].optionValues[i].optionValueGroupName;
                 }
-                this.nodeState.optionValues[i].originalIndex = i;
-                currGroup.push(this.nodeState.optionValues[i])
+                if (!this.bibState[this.nodeName].optionValues[i].hide) {
+                    this.bibState[this.nodeName].optionValues[i].originalIndex = i;
+                    currGroup.push(this.bibState[this.nodeName].optionValues[i])
+                }
             }
             optionValueGroups.push(currGroup);
             return optionValueGroups;
@@ -36,7 +38,7 @@ export default {
             this.node.selectItem(index);
             this.enEdition = false;
         },
-        positionPopupOnOpen(){
+        positionPopupOnOpen() {
             return window.scrollY + 50
         }
     }
@@ -46,16 +48,16 @@ export default {
     <div class="content" @click="enEdition = true">
         <div class="selection">
             <div class="col-1">
-                <span>{{ $t(nodeState.optionName) }}</span>
+                <span>{{ $t(bibState[this.nodeName].optionName) }}</span>
             </div>
             <div class="col-1-bis"></div>
             <div class="col-2">
                 <div>
-                    <strong>{{ $t(nodeState.optionValues[nodeState.selectedIndex].valueName) }}</strong>
+                    <strong>{{ $t(bibState[this.nodeName].optionValues[bibState[this.nodeName].selectedIndex].valueName) }}</strong>
                 </div>
             </div>
             <div class="col-3">
-                <strong>{{ displayPrice }}</strong>
+                <strong>{{ $eur(this.bibState[this.nodeName].optionPrice) }}</strong>
             </div>
         </div>
     </div>
@@ -71,7 +73,7 @@ export default {
                     {{ $t("retourConfigurateur") }}
                 </div>
                 <div class="popup-content">
-                    <h2>{{ $t(nodeState.optionName) }}</h2>
+                    <h2>{{ $t(bibState[this.nodeName].optionName) }}</h2>
 
                     <div class="lookup-groups">
                         <template v-for="(group, index) in groupedOptionValues">
@@ -103,7 +105,7 @@ export default {
                                         </button>
                                     </div>
                                     <template
-                                        v-if="optionValue.optionValueGroupName != nodeState.optionValues[index - 1]"
+                                        v-if="optionValue.optionValueGroupName != bibState[this.nodeName].optionValues[index - 1]"
                                     ></template>
                                 </div>
                             </div>

@@ -37,10 +37,10 @@ export default {
                     <div class="col-2">
                         <div>
                             <span>{{$t("hauteur")}}</span>
-                            <input-when-active :value="bibState.dimensions.x" @input="setX" />
+                            <input :value="bibState.dimensions.y" @input="setY"  size="6" onfocus="select()"/>
                             <span class="car-sep">-</span>
                             <span>{{$t("largeur")}}</span>
-                            <strong>{{ bibState.dimensions.y }}</strong>
+                            <input :value="bibState.dimensions.x" @input="setX" size="6" onfocus="select()"/>
                         </div>
                     </div>
                     <div class="col-3"></div>
@@ -59,7 +59,7 @@ export default {
                     </div>
                     <div class="col-2">
                         <div>
-                            <span>1</span>
+                            <input :value="bibState.dimensions.quantite" @input="setQuantite"  size="3" onfocus="select()"/>
                             <strong></strong>
                         </div>
                     </div>
@@ -72,3 +72,10 @@ export default {
         </div>
     </div>
 </template>
+<style>
+input{
+    border:none;
+    font-weight: 900;
+}
+
+</style>

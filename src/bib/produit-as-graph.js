@@ -22,32 +22,28 @@ import petitBois from "./vitrage-petit-bois/petit-bois"
 import vitragePetitBois from "./vitrage-petit-bois/vitrage-petit-bois"
 
 import listeOptionsChoisis from "../mega-model/ticket-caisse/liste-options-choisis"
+import conditionsAchatVente from "./conditions-achat-vente"
+import prixProduit from "./prix-produit"
+import prixRemise from "../mega-model/prix-remise"
+
 
 
 
 export default function () {
+    graph.addNode('conditionsAchatVente', conditionsAchatVente);
     graph.addNode('produit', {
         // this is the outputVal the graph will watch. Any function that changes this will trigger a reevaluation of everything downstream.
-        outputVal: { name: "Fenêtre deux vantaux" }
+        outputVal: { name: "fenêtreDeuxVantaux" }
     })
 
     graph.addNode('dimensions', dimensions);
+    graph.addNode('prixProduit', prixProduit);
+    graph.addNode('prixRemise',prixRemise);
     graph.addNode('gamme', gamme);
     graph.addNode('couleur', couleur);
     graph.addNode('forme', forme);
 
     graph.addNode('gammeCouleurForme', gammeCouleurForme);
-
-
-    graph.addNode('basePrice', {
-        dependsOn: ['dimensions', 'gamme'],
-        ownPrice: 0,
-        onUpstreamChange: function (args) {
-            if (args.gamme === "Gamme Tradilour 68mm") {
-                this.ownPrice = args.dimensions.x * args.dimensions.y / 100;
-            }
-        }
-    })
 
     graph.addNode('typePose', typePose);
     graph.addNode('typeCote', typeCote);

@@ -1,4 +1,5 @@
 export default {
+    fenêtreDeuxVantaux:"Fenêntre 2 vantaux",
     myMessage: "bonjour cobber",
     choixBibliothèque: "Choix de la bibliothèque",
     bobbyMenuiseriesPvc2019: "BOBBY - MENUISERIES PVC 2019",
@@ -101,8 +102,24 @@ export default {
     petitsBoisIncorporsLaiton10x8: "Petits-bois incorporés laiton 10 x 8",
     PetitsBoisIncorporsTitane10x8:"Petits-bois incorporés titane 10 x 8",
     petitsBoisRapportsDe45mm:"Petits-bois rapportés de 45 mm",
-    petitsBoisRapportsDe26mm:"Petits-bois rapportés de 26 mm"
+    petitsBoisRapportsDe26mm:"Petits-bois rapportés de 26 mm",
 
+    prixTarif : "Prix tarif",
+    prixDeVente: "Prix de vente",
+    prixDAchat: "Prix d'achat",
+    remise: "Remise",
+    vente:"Vente",
+    coefficient: "Coefficient",
+
+remiseClient:"Remise client",
+remiseUnitaire:"Remise unitaire",
+remisePct : "Remise en %",
+prixDeVenteClient : "Prix de vente client",
+
+margeVendeur: "Marge vendeur",
+unitaire: "Unitaire",
+globale: "Globale",
+taux: "Taux",
 
 
 

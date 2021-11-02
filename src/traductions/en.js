@@ -1,5 +1,5 @@
 export default {
-    myMessage:"hello cobber",
+    fenêtreDeuxVantaux:"Casement window 2 casements",
     choixBibliothèque:"Choose a catalogue",
     bobbyMenuiseriesPvc2019:"BOBBY - PVC WINDOWS 2019",
     choixFamille:"Choose a family",

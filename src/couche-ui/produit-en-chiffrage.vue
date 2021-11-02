@@ -21,6 +21,7 @@ export default {
         console.log(this.$bibState);
     }
 }
+
 </script>
 <template>
     <div>

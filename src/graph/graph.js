@@ -118,15 +118,20 @@ export default {
                 this.nodes[currNode].isBeingTraversed = true;
                 var dependencies = null;
                 if (this.nodeDependencies[currNode]) {
-                    dependencies = [];
+                    dependencies = {};
                     for (var j = 0; j < this.nodeDependencies[currNode].length; j++) {
-                        // Object.defineProperty(
-                        //     dependencies,
-                        //     this.nodeDependencies[currNode][j],
-                        //     { value: , writable: false }
-                        // );
+                        Object.defineProperty(
+                            dependencies,
+                            this.nodeDependencies[currNode][j],
+                            { 
+                                value: JSON.parse(JSON.stringify(this.output[this.nodeDependencies[currNode][j]])), 
+                                configurable: false,
+                                enumerable:true,
+                                writable: false 
+                            }
+                        );
                         // In listeOptionsChoisis, I couldn't do Object.entries on this object, so try going back to an array.
-                        dependencies.push(JSON.parse(JSON.stringify(this.output[this.nodeDependencies[currNode][j]])))
+                        //dependencies.push(JSON.parse(JSON.stringify(this.output[this.nodeDependencies[currNode][j]])))
                     }
                     //this.nodes[currNode].nodeDependencies.forEach(d => Object.assign(dependencies, d, JSON.parse(JSON.stringify(this.output[d]))));//    [currNode].map(d=>JSON.parse(JSON.stringify(this.output[d])));
                 }

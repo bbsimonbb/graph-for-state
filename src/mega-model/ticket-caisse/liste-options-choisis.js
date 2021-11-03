@@ -10,6 +10,7 @@ export default {
         // to do: don't assign to ouput value !!!!!
         
         const optionsArray = Object.entries(dependsOn);
-        this.outputVal.liste = optionsArray.map(n => n[1].optionValues[n.selectedIndex].valueName)
+        //this.outputVal.liste = optionsArray.map(n => n[1].optionValues[n.selectedIndex].valueName)        
+        this.outputVal = dependsOn.map(n => n.optionValues[n.selectedIndex].valueName)
     }
 }

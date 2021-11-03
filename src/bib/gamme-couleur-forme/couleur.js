@@ -40,6 +40,7 @@ export default {
         selectedIndex: 0
     },
     onUpstreamChange(d) {
+        console.log("couleur onUpstreamChange()")
         if (d.gamme.selectedIndex === 0) {
             this.outputVal.optionValues.forEach(o =>{ if(o.valueName.includes('blanc')) o.hide = true});
         } else {

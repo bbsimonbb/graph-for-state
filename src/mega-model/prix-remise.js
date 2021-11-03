@@ -9,6 +9,7 @@ export default {
         prixDeVenteClient: 0,
     },
     onUpstreamChange(d) {
+        console.log("prixProduit onUpstreamChange()")
         this.prixDeVenteAvantRemise = d.prixProduit.prixDeVente;
         this.recalculate();
     },

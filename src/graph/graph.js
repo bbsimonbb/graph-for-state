@@ -67,8 +67,7 @@ export default {
         //this.output[name] = _.cloneDeep(newNode.outputVal);
         this.output[name] = JSON.parse(JSON.stringify(newNode.outputVal));
 
-        // for each node, we'll make a little object containing (the output of) that newNode's dependencies
-
+        // for each node, we'll store in the graph the list of dependencies
         if (newNode.dependsOn) {
             if (typeof (newNode.dependsOn) !== 'function') {
                 // standard node, depends on a list of named nodes, already present.
@@ -119,13 +118,15 @@ export default {
                 this.nodes[currNode].isBeingTraversed = true;
                 var dependencies = null;
                 if (this.nodeDependencies[currNode]) {
-                    dependencies = {};
+                    dependencies = [];
                     for (var j = 0; j < this.nodeDependencies[currNode].length; j++) {
-                        Object.defineProperty(
-                            dependencies,
-                            this.nodeDependencies[currNode][j],
-                            { value: JSON.parse(JSON.stringify(this.output[this.nodeDependencies[currNode][j]])), writable: false }
-                        )
+                        // Object.defineProperty(
+                        //     dependencies,
+                        //     this.nodeDependencies[currNode][j],
+                        //     { value: , writable: false }
+                        // );
+                        // In listeOptionsChoisis, I couldn't do Object.entries on this object, so try going back to an array.
+                        dependencies.push(JSON.parse(JSON.stringify(this.output[this.nodeDependencies[currNode][j]])))
                     }
                     //this.nodes[currNode].nodeDependencies.forEach(d => Object.assign(dependencies, d, JSON.parse(JSON.stringify(this.output[d]))));//    [currNode].map(d=>JSON.parse(JSON.stringify(this.output[d])));
                 }

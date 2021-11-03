@@ -6,6 +6,7 @@ export default {
 
     // My output is an array of strings of selected option values
     onUpstreamChange(dependsOn) {
+        console.log("listeOptionsChoisis onUpstreamChange()")
         // to do: don't assign to ouput value !!!!!
         
         const optionsArray = Object.entries(dependsOn);

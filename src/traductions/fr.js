@@ -124,6 +124,14 @@ totalHT: "Total HT",
 tauxTvaPct: "Taux TVA (%)",
 totalTtc: "Total TTC",
 
+TriplevitrageVIR418WarmEdgeargon418WarmEdgeargon4VIR:"Triple vitrage VIR 4/18 Warm Edge + argon/4/18 Warm Edge + argon/4 VIR",
+TriplevitrageVIR418WarmEdgeargon418WarmEdgeargon4VIRautonettoyant:"Triple vitrage VIR 4/18 Warm Edge + argon/4/18 Warm Edge + argon/4 VIR autonettoyant",
+TriplevitrageVIR44215WarmEdgeargon415WarmEdgeargon4VIRautonettoyant: "Triple vitrage VIR 44,2/15 Warm Edge + argon/4/15 Warm Edge + argon/4 VIR autonettoyant",
+TriplevitrageVIR44212WarmEdgeargon412WarmEdgeargon442VIRautonettoyant: "Triple vitrage VIR 44.2/12 Warm Edge + argon/4/12 Warm Edge + argon/44.2 VIR autonettoyant",
+TriplevitrageVIR415WarmEdgeargon415WarmEdgeargon442VIR:"Triple vitrage VIR 4/15 Warm Edge + argon/4/15 Warm Edge + argon/44.2 VIR",
+TriplevitrageVIR414WarmEdgeargon414WarmEdgeargonSP10VIR: "Triple vitrage VIR 4/14 Warm Edge + argon/4/14 Warm Edge + argon/SP10 VIR",
+TriplevitrageVIR44212WarmEdgeargon412WarmEdgeargon442VIR: "Triple vitrage VIR 44.2/12 Warm Edge + argon/4/12 Warm Edge + argon/44.2 VIR",
+
 
 
 

@@ -39,9 +39,6 @@ export default function () {
     })
 
     graph.addNode('dimensions', dimensions);
-    graph.addNode('prixProduit', prixProduit);
-    graph.addNode('prixRemise',prixRemise);
-    graph.addNode('margeVendeur', margeVendeur);
     graph.addNode('gamme', gamme);
     graph.addNode('couleur', couleur);
     graph.addNode('forme', forme);
@@ -56,16 +53,22 @@ export default function () {
 
     graph.addNode('sensOuverture',sensOuverture);
     graph.addNode('oscilloBattant',oscilloBattant);
-    graph.addNode('sensOuvertureOb',sensOuvertureOb);
 
     graph.addNode('vitrage', vitrage);
     graph.addNode('petitBois',petitBois);
+    graph.addNode('sensOuvertureOb',sensOuvertureOb); 
+       
     graph.addNode('vitragePetitBois',vitragePetitBois);
-    graph.addNode('tvaTotalTtc',tvaTotalTtc);
 
-    // reporting nodes added last
+    // reporting nodes added after options
     graph.addNode('listeOptionsChoisis', listeOptionsChoisis);
 
+    // then all the totals that depend
+    graph.addNode('prixProduit', prixProduit);
+    graph.addNode('prixRemise',prixRemise);
+    graph.addNode('margeVendeur', margeVendeur);    
+    graph.addNode('tvaTotalTtc',tvaTotalTtc);
+    
     graph.fullTraversal();
     return graph;
 }

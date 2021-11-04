@@ -2,21 +2,18 @@
 export default {
     props: ['nodeName'],
     inject: ['bibState','bib'],
+    data(){return {open:false}}
 }
 </script>
 <template>
-    <div class="accordion-item option-group expend">
-        <input
-            id="Quotation_OptionGroupModels_1__Id"
-            name="Quotation.OptionGroupModels[1].Id"
-            tabindex="-1"
-            type="hidden"
-            value="2"
-        />
-
+        <div :class="{
+            'accordion-item':true,
+            'option-group':true,
+            'sby-open': open
+        }">
         <div class="accordion-item-heading">
             <div class="accordion-item-title">
-                <i class="minus-square"></i>
+                <b>+</b>
                 <span class>{{ $t(bibState[nodeName].optionGroupName) }}</span>
             </div>
 
@@ -27,7 +24,7 @@ export default {
                     name="Quotation.OptionGroupModels[1].BtnOptionGroupId"
                     type="submit"
                 >
-                    <span class="price">{{ bibState[nodeName].optionGroupPrice }} €</span>
+                    <span class="price">{{$eur( bibState[nodeName].optionGroupPrice || 0) }}</span>
                 </button>
             </div>
         </div>

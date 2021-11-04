@@ -4,6 +4,6 @@ export default {
         coefficientVente: 2
     },
     setCoefficient(e){
-        this.outputVal.coefficientVente = parseFloat(e.target.value);
+        this.outputVal.coefficientVente = parseFloat(e.target.value) || 0;
     }
 }

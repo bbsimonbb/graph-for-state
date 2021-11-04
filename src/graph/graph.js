@@ -19,7 +19,7 @@ export default {
         if (newNode.dependsOn && typeof (newNode.dependsOn) !== 'function')
             var dependenciesNotYetPresent = newNode.dependsOn.filter(val => !this.nodeNamesInOrderOfAddition.includes(val))
         if (dependenciesNotYetPresent && dependenciesNotYetPresent.length)
-            throw new Error(`We can't add this node because the following dependencies aren't present: ${dependenciesNotYetPresent.join()}`);
+            throw new Error(`We can't add the node ${name} because the following dependencies aren't present: ${dependenciesNotYetPresent.join()}`);
 
         if (newNode.outputVal && (typeof (newNode.outputVal) === 'string' || typeof (newNode.outputVal) === 'number')) {
             //watch the outputVal property of every node.

@@ -16,10 +16,6 @@ export default {
         'elcia-option': option,
         'ticket-caisse':ticketCaisse
     },
-    mounted() {
-        console.log("cobber");
-        console.log(this.$bibState);
-    }
 }
 
 </script>
@@ -37,14 +33,6 @@ export default {
             <div id="quote-quote">
                 <div class="form v2">
                     <form>
-                        <input id="Sequence" name="Sequence" tabindex="-1" type="hidden" value="21" />
-                        <input
-                            id="FormId"
-                            name="FormId"
-                            tabindex="-1"
-                            type="hidden"
-                            value="fdc7ae83-cdd8-402b-907a-e80cf3a6f31a"
-                        />
                         <button disabled="true" class="quotationSubmit outside-screen"></button>
                         <div class="page-content-outer">
                             <div class="wizard">
@@ -155,8 +143,7 @@ export default {
                                                     tabindex="-1"
                                                     type="submit"
                                                 >
-                                                    <i class="plus-square-o"></i>
-                                                    {{ $t("toutOuvrir") }}
+                                                    <b>+</b>{{ $t("toutOuvrir") }}
                                                 </button>
                                             </div>
                                             <div>
@@ -168,8 +155,7 @@ export default {
                                                     tabindex="-1"
                                                     type="submit"
                                                 >
-                                                    <i class="minus-square-o"></i>
-                                                    {{ $t("toutFermer") }}
+                                                    <b>-</b>{{ $t("toutFermer") }}
                                                 </button>
                                             </div>
                                         </div>

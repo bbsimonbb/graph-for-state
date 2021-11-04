@@ -24,7 +24,9 @@ import vitragePetitBois from "./vitrage-petit-bois/vitrage-petit-bois"
 import listeOptionsChoisis from "../mega-model/ticket-caisse/liste-options-choisis"
 import conditionsAchatVente from "./conditions-achat-vente"
 import prixProduit from "./prix-produit"
-import prixRemise from "../mega-model/prix-remise"
+import prixRemise from "../mega-model/ticket-caisse/prix-remise"
+import margeVendeur from "../mega-model/ticket-caisse/marge-vendeur"
+import tvaTotalTtc from "../mega-model/ticket-caisse/tva-total-ttc"
 
 
 
@@ -39,6 +41,7 @@ export default function () {
     graph.addNode('dimensions', dimensions);
     graph.addNode('prixProduit', prixProduit);
     graph.addNode('prixRemise',prixRemise);
+    graph.addNode('margeVendeur', margeVendeur);
     graph.addNode('gamme', gamme);
     graph.addNode('couleur', couleur);
     graph.addNode('forme', forme);
@@ -58,6 +61,7 @@ export default function () {
     graph.addNode('vitrage', vitrage);
     graph.addNode('petitBois',petitBois);
     graph.addNode('vitragePetitBois',vitragePetitBois);
+    graph.addNode('tvaTotalTtc',tvaTotalTtc);
 
     // reporting nodes added last
     graph.addNode('listeOptionsChoisis', listeOptionsChoisis);

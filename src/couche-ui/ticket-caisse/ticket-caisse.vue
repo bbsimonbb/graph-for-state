@@ -1,11 +1,13 @@
 <script>
 import listeOptionsChoisis from "./liste-options-choisis.vue"
 import conditionsVue from "./conditions.vue"
+import Option from '../option.vue'
 
 export default {
  components:{
      'liste-options-choisis': listeOptionsChoisis,
-     'conditions': conditionsVue
+     'conditions': conditionsVue,
+  Option
  },
  inject:['bibState','bib']
 }
@@ -327,37 +329,37 @@ export default {
                     </div>
                     <div class="section">
                         <div class="title">
-                            <span>Marge vendeur</span>
+                            <span>{{$t("margeVendeur")}}</span>
                         </div>
                         <div class="content">
                             <!-- Marge unitaire -->
                             <div class="key-value">
                                 <div class="key">
-                                    <span>Unitaire</span>
+                                    <span>{{$t("unitaire")}}</span>
                                 </div>
                                 <div class="value">
-                                    <span>368,55 €</span>
+                                    <span>{{$eur(bibState.margeVendeur.margeUnitaire)}}</span>
                                 </div>
                             </div>
 
                             <!-- Globale -->
                             <div class="key-value">
                                 <div class="key">
-                                    <span>Globale</span>
+                                    <span>{{$t("globale")}}</span>
                                 </div>
                                 <div class="value">
-                                    <span>368,55 €</span>
+                                   <span>{{$eur(bibState.margeVendeur.margeGlobale)}}</span>
                                 </div>
                             </div>
 
                             <!-- Taux -->
                             <div class="key-value">
                                 <div class="item">
-                                    <span>Taux</span>
+                                    <span>{{$t("taux")}}</span>
                                 </div>
                                 <div class="value">
-                                    <span>50 %</span>
-                                </div>
+                                    <span>{{(bibState.margeVendeur.tauxDeMarge * 100).toFixed()}} %</span>
+                               </div>
                             </div>
                         </div>
                     </div>
@@ -368,7 +370,7 @@ export default {
         <div class="separator"></div>
         <div class="key-value">
             <div class="key">
-                <span>Quantité</span>
+                <span>{{$t("quantité")}}</span>
             </div>
             <div class="value">
                 <span>1</span>
@@ -376,53 +378,55 @@ export default {
         </div>
         <div class="key-value">
             <div class="key">
-                <span>Total HT</span>
+                <span>{{$t("totalHT")}}</span>
             </div>
             <div class="value">
-                <span>737,10 €</span>
+                <span>{{$eur(bibState.prixRemise.prixDeVenteClient)}}</span>
             </div>
         </div>
         <div class="key-value">
             <div class="key">
-                <span>Taux TVA (%)</span>
+                <span>{{$t("tauxTvaPct")}}</span>
             </div>
             <div class="value vatSelectedRateWrapper">
                 <div class="dropdown vatSelectedRate">
-                    <button disabled></button>
-                    <div class="dropdown-toggle">
-                        <div class="table">
-                            <div class="table-cell-text">
-                                <span>20</span>
-                            </div>
-                            <div class="table-cell-caret">
-                                <div class="addon">
-                                    <i class="caret-down"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="dropdown-menu" data-addscrollposition="true">
-                        <li class="b" data-value="5,5">
-                            <a class="no-loader">5,5</a>
-                        </li>
-                        <li class="b" data-value="10">
-                            <a class="no-loader">10</a>
-                        </li>
-                        <li class="b" data-value="20">
-                            <a class="no-loader">20</a>
-                        </li>
-                    </ul>
+                    <select style="height:20px" @change="bib.nodes.tvaTotalTtc.setTauxTva">
+                        <option value=".2">20 %</option>
+                        <option value=".1">10 %</option>
+                        <option value=".055">5,5 %</option> 
+                    </select>
                 </div>
             </div>
         </div>
         <div class="separator"></div>
         <div class="key-value total">
             <div class="key">
-                <span>Total TTC</span>
+                <span>{{$t("totalTtc")}}</span>
             </div>
             <div class="value">
-                <span>884,52 €</span>
+                <span>{{$eur(bibState.tvaTotalTtc.totalTtc)}}</span>
             </div>
         </div>
     </div>
 </template>
+<style scoped>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+select {
+  appearance: none;
+  background-color: white;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  
+}
+</style>

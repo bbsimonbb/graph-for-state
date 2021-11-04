@@ -120,6 +120,9 @@ margeVendeur: "Marge vendeur",
 unitaire: "Unitaire",
 globale: "Globale",
 taux: "Taux",
+totalHT: "Total HT",
+tauxTvaPct: "Taux TVA (%)",
+totalTtc: "Total TTC",
 
 
 

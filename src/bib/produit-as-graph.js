@@ -27,11 +27,12 @@ import prixProduit from "./prix-produit"
 import prixRemise from "../mega-model/ticket-caisse/prix-remise"
 import margeVendeur from "../mega-model/ticket-caisse/marge-vendeur"
 import tvaTotalTtc from "../mega-model/ticket-caisse/tva-total-ttc"
-
+import ui from "../mega-model/ui"
 
 
 
 export default function () {
+    graph.addNode('ui', ui);
     graph.addNode('conditionsAchatVente', conditionsAchatVente);
     graph.addNode('produit', {
         // this is the outputVal the graph will watch. Any function that changes this will trigger a reevaluation of everything downstream.
@@ -51,24 +52,24 @@ export default function () {
     graph.addNode('appuiEtSeuil', appuiEtSeuil);
     graph.addNode('typeCoteDormantHabillage', typeCoteDormantHabillage);
 
-    graph.addNode('sensOuverture',sensOuverture);
-    graph.addNode('oscilloBattant',oscilloBattant);
+    graph.addNode('sensOuverture', sensOuverture);
+    graph.addNode('oscilloBattant', oscilloBattant);
 
     graph.addNode('vitrage', vitrage);
-    graph.addNode('petitBois',petitBois);
-    graph.addNode('sensOuvertureOb',sensOuvertureOb); 
-       
-    graph.addNode('vitragePetitBois',vitragePetitBois);
+    graph.addNode('petitBois', petitBois);
+    graph.addNode('sensOuvertureOb', sensOuvertureOb);
+
+    graph.addNode('vitragePetitBois', vitragePetitBois);
 
     // reporting nodes added after options
     graph.addNode('listeOptionsChoisis', listeOptionsChoisis);
 
     // then all the totals that depend
     graph.addNode('prixProduit', prixProduit);
-    graph.addNode('prixRemise',prixRemise);
-    graph.addNode('margeVendeur', margeVendeur);    
-    graph.addNode('tvaTotalTtc',tvaTotalTtc);
-    
+    graph.addNode('prixRemise', prixRemise);
+    graph.addNode('margeVendeur', margeVendeur);
+    graph.addNode('tvaTotalTtc', tvaTotalTtc);
+
     graph.fullTraversal();
     return graph;
 }

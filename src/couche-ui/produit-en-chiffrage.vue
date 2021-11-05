@@ -8,13 +8,16 @@ import ticketCaisse from './ticket-caisse/ticket-caisse.vue';
 export default {
     inject: ['bibState'],
     data: function () {
-        return { bibState: this.bibState }
+        return {
+            bibState: this.bibState,
+            openClosedToggle: 0
+        }
     },
     components: {
         'dimensions-et-quantite': dimensionsEtQuantite,
         'elcia-option-group': optionGroup,
         'elcia-option': option,
-        'ticket-caisse':ticketCaisse
+        'ticket-caisse': ticketCaisse
     },
 }
 
@@ -135,28 +138,22 @@ export default {
 
                                         <div class="accordion-allopenclose">
                                             <div>
-                                                <button
-                                                    id="BtnAllOpened"
-                                                    value="True"
-                                                    class="second"
-                                                    name="Quotation.BtnAllAccordionOpened"
-                                                    tabindex="-1"
-                                                    type="submit"
+                                                <div
+                                                    style="font-weight: 900;"
+                                                    @click="openClosedToggle = Math.abs(openClosedToggle) + 1"
                                                 >
-                                                    <b>+</b>{{ $t("toutOuvrir") }}
-                                                </button>
+                                                    <b>+</b>
+                                                    {{ $t("toutOuvrir") }}
+                                                </div>
                                             </div>
                                             <div>
-                                                <button
-                                                    id="BtnAllClosed"
-                                                    value="True"
-                                                    class="second"
-                                                    name="Quotation.BtnAllAccordionClosed"
-                                                    tabindex="-1"
-                                                    type="submit"
+                                                  <div
+                                                    style="padding-left:50px; font-weight: 900;"
+                                                    @click="openClosedToggle = (Math.abs(openClosedToggle) + 1) *-1"
                                                 >
-                                                    <b>-</b>{{ $t("toutFermer") }}
-                                                </button>
+                                                    <b>-</b>
+                                                    {{ $t("toutFermer") }}
+                                                </div>
                                             </div>
                                         </div>
 
@@ -191,26 +188,37 @@ export default {
 
                                     <div class="accordion">
                                         <dimensions-et-quantite></dimensions-et-quantite>
-                                        <elcia-option-group nodeName="gammeCouleurForme">
+                                        <elcia-option-group
+                                            nodeName="gammeCouleurForme"
+                                            :open-closed-toggle="openClosedToggle"
+                                        >
                                             <elcia-option nodeName="gamme"></elcia-option>
                                             <elcia-option nodeName="couleur"></elcia-option>
                                             <elcia-option nodeName="forme"></elcia-option>
                                         </elcia-option-group>
-                                        <elcia-option-group nodeName="typeCoteDormantHabillage">
+                                        <elcia-option-group
+                                            nodeName="typeCoteDormantHabillage"
+                                            :open-closed-toggle="openClosedToggle"
+                                        >
                                             <elcia-option nodeName="typePose"></elcia-option>
                                             <elcia-option nodeName="typeCote"></elcia-option>
                                             <elcia-option nodeName="dormant"></elcia-option>
                                             <elcia-option nodeName="appuiEtSeuil"></elcia-option>
                                         </elcia-option-group>
-                                        <elcia-option-group nodeName="sensOuvertureOb">
+                                        <elcia-option-group
+                                            nodeName="sensOuvertureOb"
+                                            :open-closed-toggle="openClosedToggle"
+                                        >
                                             <elcia-option nodeName="sensOuverture"></elcia-option>
                                             <elcia-option nodeName="oscilloBattant"></elcia-option>
                                         </elcia-option-group>
-                                        <elcia-option-group nodeName="vitragePetitBois">
+                                        <elcia-option-group
+                                            nodeName="vitragePetitBois"
+                                            :open-closed-toggle="openClosedToggle"
+                                        >
                                             <elcia-option nodeName="vitrage"></elcia-option>
                                             <elcia-option nodeName="petitBois"></elcia-option>
                                         </elcia-option-group>
-                                        
                                     </div>
                                 </div>
 
@@ -929,7 +937,7 @@ export default {
 
                                 <div class="col-3">
                                     <div class="inner">
-<ticket-caisse></ticket-caisse>
+                                        <ticket-caisse></ticket-caisse>
                                         <div class="action">
                                             <button
                                                 value="True"

@@ -1,4 +1,6 @@
 export default {
+    name:'couleur',    
+    emitChanged(){},
     dependsOn: ['gamme'],
     outputVal: {
         displayHint: "standardOptionWithIcons",
@@ -39,9 +41,9 @@ export default {
         defaultIndex: 0,
         selectedIndex: 0
     },
-    onUpstreamChange(d) {
-        console.log("couleur onUpstreamChange()")
-        if (d.gamme.selectedIndex === 0) {
+    onUpstreamChange() {
+        // filter out white for gamme pop
+        if (this.d.gamme.selectedIndex === 0) {
             this.outputVal.optionValues.forEach(o =>{ if(o.valueName.includes('blanc')) o.hide = true});
         } else {
             this.outputVal.optionValues.forEach(o =>{ o.hide = false});
@@ -49,5 +51,6 @@ export default {
     },
     selectItem(index) {
         this.outputVal.selectedIndex = index;
+
     }
 }

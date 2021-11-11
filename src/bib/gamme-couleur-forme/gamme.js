@@ -1,4 +1,6 @@
 export default {
+    name:'gamme',
+    emitChanged(){},
     outputVal: {
         displayHint: "standardOptionWithIcons",
         optionName: "gamme",
@@ -18,5 +20,6 @@ export default {
     },
     selectItem(index) {
         this.outputVal.selectedIndex = index;
+        this.emitChanged(this);
     }
 }

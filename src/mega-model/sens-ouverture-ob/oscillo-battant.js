@@ -1,4 +1,5 @@
 export default {
+    name:'oscilloBattant',
     dependsOn: ['conditionsAchatVente'],
     outputVal: {
         displayHint: "standardOptionWithIcons",
@@ -18,19 +19,20 @@ export default {
         selectedIndex: 0
     },
     coefficient: 1,
-    onUpstreamChange(d) {
-        this.coefficient = d.conditionsAchatVente.coefficientVente;
+    onUpstreamChange() {
         this.recalculate();
+        return true;
     },
 
     selectItem(index) {
         this.outputVal.selectedIndex = index;
         this.recalculate();
+        this.emitChanged(this);
     },
     recalculate() {
         if(this.outputVal.selectedIndex === 0)
             this.outputVal.optionPrice = 0;
         else
-            this.outputVal.optionPrice = -13.50 * this.coefficient;
+            this.outputVal.optionPrice = -13.50 * this.d.conditionsAchatVente.coefficientVente;
     }
 }

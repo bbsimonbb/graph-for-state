@@ -1,19 +1,22 @@
 export default {
+    name:'tvaTotalTtc',    
+    emitChanged(){},
+    d:{},
     dependsOn:['prixRemise'],
     outputVal:{
         tauxTva:.2,
         totalTtc:0
     },
-    prixDeVenteClient:0,
-    onUpstreamChange(d){
-        this.prixDeVenteClient = d.prixRemise.prixDeVenteClient;
+    onUpstreamChange(){
         this.recalculate();
+        return true;
     },
     setTauxTva(event){
         this.outputVal.tauxTva = parseFloat(event.target.value);
-        this.recalculate()
+        this.recalculate();
+        this.emitChanged(this);
     },
     recalculate(){        
-        this.outputVal.totalTtc = (this.outputVal.tauxTva +1 ) * this.prixDeVenteClient;
+        this.outputVal.totalTtc = (this.outputVal.tauxTva +1 ) * this.d.prixRemise.prixDeVenteClient;
     }
 }

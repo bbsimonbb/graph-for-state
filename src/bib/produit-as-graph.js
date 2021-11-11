@@ -32,43 +32,43 @@ import ui from "../mega-model/ui"
 
 
 export default function () {
-    graph.addNode('ui', ui);
-    graph.addNode('conditionsAchatVente', conditionsAchatVente);
-    graph.addNode('produit', {
-        // this is the outputVal the graph will watch. Any function that changes this will trigger a reevaluation of everything downstream.
+    graph.addNode(ui);
+    graph.addNode(conditionsAchatVente);
+    graph.addNode({
+        name:'produit',
         outputVal: { name: "fenêtreDeuxVantaux" }
     })
 
-    graph.addNode('dimensions', dimensions);
-    graph.addNode('gamme', gamme);
-    graph.addNode('couleur', couleur);
-    graph.addNode('forme', forme);
+    graph.addNode(dimensions);
+    graph.addNode(gamme);
+    graph.addNode(couleur);
+    graph.addNode(forme);
 
-    graph.addNode('gammeCouleurForme', gammeCouleurForme);
+    graph.addNode(gammeCouleurForme);
 
-    graph.addNode('typePose', typePose);
-    graph.addNode('typeCote', typeCote);
-    graph.addNode('dormant', dormant);
-    graph.addNode('appuiEtSeuil', appuiEtSeuil);
-    graph.addNode('typeCoteDormantHabillage', typeCoteDormantHabillage);
+    graph.addNode(typePose);
+    graph.addNode(typeCote);
+    graph.addNode(dormant);
+    graph.addNode(appuiEtSeuil);
+    graph.addNode(typeCoteDormantHabillage);
 
-    graph.addNode('sensOuverture', sensOuverture);
-    graph.addNode('oscilloBattant', oscilloBattant);
+    graph.addNode(sensOuverture);
+    graph.addNode(oscilloBattant);
 
-    graph.addNode('vitrage', vitrage);
-    graph.addNode('petitBois', petitBois);
-    graph.addNode('sensOuvertureOb', sensOuvertureOb);
+    graph.addNode(vitrage);
+    graph.addNode(petitBois);
+    graph.addNode(sensOuvertureOb);
 
-    graph.addNode('vitragePetitBois', vitragePetitBois);
+    graph.addNode(vitragePetitBois);
 
     // reporting nodes added after options
-    graph.addNode('listeOptionsChoisis', listeOptionsChoisis);
+    graph.addNode(listeOptionsChoisis);
 
     // then all the totals that depend
-    graph.addNode('prixProduit', prixProduit);
-    graph.addNode('prixRemise', prixRemise);
-    graph.addNode('margeVendeur', margeVendeur);
-    graph.addNode('tvaTotalTtc', tvaTotalTtc);
+    graph.addNode(prixProduit);
+    graph.addNode(prixRemise);
+    graph.addNode(margeVendeur);
+    graph.addNode(tvaTotalTtc);
 
     graph.fullTraversal();
     return graph;

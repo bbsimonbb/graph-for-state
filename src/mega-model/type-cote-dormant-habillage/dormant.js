@@ -1,4 +1,7 @@
 export default {
+    name:'dormant',    
+    emitChanged(){},
+    d:{},
     outputVal: {
         displayHint: "standardOptionWithIcons",
         optionName: "typePose",
@@ -40,8 +43,8 @@ export default {
         defaultIndex:0,
         selectedIndex:0        
     },
-    onUpstreamChange(){},
     selectItem(index){
         this.outputVal.selectedIndex = index;
+        this.emitChanged(this);
     }
 }

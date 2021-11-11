@@ -1,25 +1,29 @@
 export default {
+    name:'vitrage',    
+    emitChanged(){},
+    dependsOn: ['gamme', 'dimensions'],
+    d:{},
     gamme: 0,
     x: 0,
     y: 0,
-    onUpstreamChange(d) {
-        if (this.gamme !== d.gamme.selectedIndex) {
+    onUpstreamChange() {
+        if (this.gamme !== this.d.gamme.selectedIndex) {
             this.outputValue.selectedIndex = 0;
-            this.gamme = d.gamme.selectedIndex;
+            this.gamme = this.d.gamme.selectedIndex;
+            return true;
         }
-        this.x = d.dimensions.x;
-        this.y = d.dimensions.y;
         //this.outputVal.optionValues = this.gamme === 0 ? this.vitragesGammePop: this.vitragesGammeAdvance;
         this.recalculate();
+        return true;
     },
     selectItem(index) {
         this.outputVal.selectedIndex = index;
         this.recalculate();
+        this.emitChanged(this)
     },
     recalculate(){        
-        this.outputVal.optionPrice = 62 * (this.gamme) + this.outputVal.selectedIndex * 6 + (this.x * this.y / 10000);
+        this.outputVal.optionPrice = 62 * (this.gamme) + this.outputVal.selectedIndex * 6 + (this.d.x * this.d.y / 10000);
     },
-    dependsOn: ['gamme', 'dimensions'],
     outputVal: {
         displayHint: "standardOptionWithIcons",
         optionName: "vitrage",

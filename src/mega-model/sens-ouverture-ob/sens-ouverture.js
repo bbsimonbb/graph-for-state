@@ -1,4 +1,5 @@
 export default {
+    name:'sensOuverture',
     outputVal: {
         displayHint: "standardOptionWithIcons",
         optionName: "sensOuverture",
@@ -22,5 +23,6 @@ export default {
     },
     selectItem(index){
         this.outputVal.selectedIndex = index;
+        this.emitChanged(this);
     }
 }

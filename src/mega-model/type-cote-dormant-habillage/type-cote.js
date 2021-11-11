@@ -1,4 +1,7 @@
 export default {
+    name:'typeCote',    
+    emitChanged(){},
+    d:{},
     outputVal: {
         displayHint: "standardOptionWithIcons",
         optionName: "typeCote",
@@ -16,8 +19,8 @@ export default {
         defaultIndex:0,
         selectedIndex:0        
     },
-    onUpstreamChange(){},
     selectItem(index){
         this.outputVal.selectedIndex = index;
+        this.emitChanged(this);
     }
 }

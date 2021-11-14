@@ -1,6 +1,6 @@
 export default {
     name: 'forme',
-    emitChanged(){},
+    store:{},
     outputVal: {
         displayHint: "standardOptionWithIcons",
         optionName: "forme",
@@ -36,6 +36,6 @@ export default {
     },
     selectItem(index){
         this.outputVal.selectedIndex = index;
-        this.emitChanged(this);
+        this.store.onNodeChanged(this);
     }
 }

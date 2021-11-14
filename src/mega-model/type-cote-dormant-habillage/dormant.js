@@ -1,6 +1,6 @@
 export default {
     name:'dormant',    
-    emitChanged(){},
+    store:{},
     d:{},
     outputVal: {
         displayHint: "standardOptionWithIcons",
@@ -45,6 +45,6 @@ export default {
     },
     selectItem(index){
         this.outputVal.selectedIndex = index;
-        this.emitChanged(this);
+        this.store.onNodeChanged(this);
     }
 }

@@ -1,6 +1,6 @@
 export default {
     name:'petitBois',    
-    emitChanged(){},
+    store:{},
     outputVal: {
         displayHint: "standardOptionWithIcons",
         optionName: "petitBois",
@@ -44,6 +44,6 @@ export default {
     },
     selectItem(index) {
         this.outputVal.selectedIndex = index;
-        this.emitChanged(this);
+        this.store.onNodeChanged(this);
     }
 }

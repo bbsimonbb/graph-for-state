@@ -8,7 +8,6 @@ import produitAsGraph from './bib/produit-as-graph'
 var graph = produitAsGraph();
 
 
-
 export default {
     components:{
         'produit': produit
@@ -21,6 +20,6 @@ export default {
 </script>
 
 <template>
-<produit></produit>
+<router-view></router-view>
  </template>
 

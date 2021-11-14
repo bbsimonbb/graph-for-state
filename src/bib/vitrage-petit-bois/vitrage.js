@@ -1,121 +1,4 @@
 export default {
-    name:'vitrage',    
-    emitChanged(){},
-    dependsOn: ['gamme', 'dimensions'],
-    d:{},
-    gamme: 0,
-    x: 0,
-    y: 0,
-    onUpstreamChange() {
-        if (this.gamme !== this.d.gamme.selectedIndex) {
-            this.outputValue.selectedIndex = 0;
-            this.gamme = this.d.gamme.selectedIndex;
-            return true;
-        }
-        //this.outputVal.optionValues = this.gamme === 0 ? this.vitragesGammePop: this.vitragesGammeAdvance;
-        this.recalculate();
-        return true;
-    },
-    selectItem(index) {
-        this.outputVal.selectedIndex = index;
-        this.recalculate();
-        this.emitChanged(this)
-    },
-    recalculate(){        
-        this.outputVal.optionPrice = 62 * (this.gamme) + this.outputVal.selectedIndex * 6 + (this.d.x * this.d.y / 10000);
-    },
-    outputVal: {
-        displayHint: "standardOptionWithIcons",
-        optionName: "vitrage",
-        optionPrice: 0,
-        optionValues: [
-            {
-                optionValueGroupName: "doubleVitrage",
-                valueName: "doubleVitrageVIR416WarmEdgeArgon4",
-                imageUrl: "/static/images/ico_img_Vitrages-4_16_4-01.JPG",
-                gamme: "pop"
-            },
-
-            {
-                optionValueGroupName: "doubleVitrage",
-                valueName: "doubleVitrageVIR414WarmEdgeArgon6",
-                imageUrl: "/static/images/ico_img_Vitrages-4_14_6-01.JPG",
-                gamme: "pop"
-            },
-
-            {
-                optionValueGroupName: "doubleVitrage",
-                valueName: "doubleVitrageVIR620WarmEdgeArgon6",
-                imageUrl: "/static/images/ico_img_Vitrages-6_20_6-01.JPG",
-                gamme: "pop"
-            },
-
-            {
-                optionValueGroupName: "doubleVitrageAutoNettoyant",
-                valueName: "doubleVitrageVIR416WarmEdgeArgon4Autonettoyant",
-                imageUrl: "/static/images/ico_img_Vitrages-4_16_4-03.JPG",
-                gamme: "pop"
-            },
-            {
-                optionValueGroupName: "doubleVitrageAutoNettoyant",
-                valueName: "doubleVitrageVIR414WarmEdgeArgon6Autonettoyant",
-                imageUrl: "/static/images/ico_img_Vitrages-4_14_6-03.JPG",
-                gamme: "pop"
-            },
-            {
-                optionValueGroupName: "doubleVitrageAutoNettoyant",
-                valueName: "doubleVitrageVIR44214WarmEdgeArgon442Autonettoyant",
-                imageUrl: "/static/images/ico_img_Vitrages-44%2C2_14_44%2C2-03.JPG",
-                gamme: "pop"
-            },
-            {
-                optionValueGroupName: "doubleVitrageAcoustique",
-                valueName: "doubleVitrageAcoustiqueVIR420WarmEdgeArgon8",
-                imageUrl: "/static/images/ico_img_Vitrages-4_20_8-02.JPG",
-                gamme: "pop"
-            },
-            {
-                optionValueGroupName: "doubleVitrageAcoustique",
-                valueName: "doubleVitrageAcoustiqueVIR1014WarmEdgeArgon441silence",
-                imageUrl: "/static/images/ico_img_Vitrages-Specifique-02.JPG",
-                gamme: "pop"
-            },
-
-            {
-                optionValueGroupName: "doubleVitrageSecurité",
-                valueName: "doubleVitrageScuritVIR418WarmEdgeArgon442",
-                imageUrl: "/static/images/ico_img_Vitrages-Specifique-03.JPG",
-                gamme: "pop"
-            },
-            {
-                optionValueGroupName: "doubleVitrageSecurité",
-                valueName: "doubleVitrageScuritVIR44218WarmEdgeArgon4",
-                imageUrl: "/static/images/ico_img_Vitrages-Specifique-04.JPG",
-                gamme: "pop"
-            },
-            {
-                optionValueGroupName: "doubleVitrageSecurité",
-                valueName: "doubleVitrageScuritVIR44214WarmEdgeArgon442",
-                imageUrl: "/static/images/ico_img_Vitrages-44%2C2_14_44%2C2-09.JPG",
-                gamme: "pop"
-            },
-            {
-                optionValueGroupName: "remplissagePlein",
-                valueName: "panneauMousseDe24mm",
-                imageUrl: "/static/images/ico_Panneau%20mousse.JPG",
-                gamme: "pop"
-            },
-            {
-                optionValueGroupName: "remplissagePlein",
-                valueName: "panneauRainuréDe31mm",
-                imageUrl: "/static/images/ico_Panneau%20rainure.JPG",
-                gamme: "pop"
-            },
-        ],
-        defaultIndex: 0,
-        selectedIndex: 0
-    },
-
     vitragesGammePop: [
         {
             optionValueGroupName: "doubleVitrage",
@@ -257,4 +140,38 @@ export default {
             gamme: "advance"
         }
     ],
+
+
+    name: 'vitrage',
+    store: {},
+    dependsOn: ['gamme', 'dimensions'],
+    d: {},
+    oldGamme: -1,
+    onUpstreamChange() {
+        // if gamme has changed, change vitrage options and select the first option
+        if (this.oldGamme !== this.d.gamme.selectedIndex) {
+            this.outputVal.optionValues = this.d.gamme.selectedIndex === 0 ? this.vitragesGammePop : this.vitragesGammeAdvance;
+            this.outputVal.selectedIndex = 0;
+            this.oldGamme = this.d.gamme.selectedIndex
+            this.recalculate();
+            return true;
+        }
+    },
+    selectItem(index) {
+        this.outputVal.selectedIndex = index;
+        this.recalculate();
+        this.store.onNodeChanged(this)
+    },
+    recalculate() {
+        this.outputVal.optionPrice = 62 * (this.d.gamme.selectedIndex) + this.outputVal.selectedIndex * 6 + (this.d.dimensions.x * this.d.dimensions.y / 10000);
+    },
+    outputVal: {
+        displayHint: "standardOptionWithIcons",
+        optionName: "vitrage",
+        optionPrice: 0,
+        optionValues: [],
+        defaultIndex: 0,
+        selectedIndex: 0
+    },
+
 }

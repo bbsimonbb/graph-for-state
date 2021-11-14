@@ -1,6 +1,6 @@
 export default {
     name:'typePose',    
-    emitChanged(){},
+    store:{},
     outputVal: {
         displayHint: "standardOptionWithIcons",
         optionName: "typePose",
@@ -29,6 +29,6 @@ export default {
     onUpstreamChange(){},
     selectItem(index){
         this.outputVal.selectedIndex = index;
-        this.emitChanged(this);
+        this.store.onNodeChanged(this);
     }
 }

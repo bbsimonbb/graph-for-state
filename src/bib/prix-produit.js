@@ -1,6 +1,6 @@
 export default {
     name:'prixProduit',    
-    emitChanged(){},
+    store:{},
     dependsOn: ['conditionsAchatVente', 'dimensions','listeOptionsChoisis'],
     d:{},
     outputVal: {
@@ -13,6 +13,6 @@ export default {
         this.outputVal.prixTarif = this.d.dimensions.x * this.d.dimensions.y / 1000 + this.d.listeOptionsChoisis.totalPrice / this.d.conditionsAchatVente.coefficientVente;
         this.outputVal.prixDAchat = this.outputVal.prixTarif * (1 - this.d.conditionsAchatVente.remise);
         this.outputVal.prixDeVente = this.outputVal.prixDAchat * this.d.conditionsAchatVente.coefficientVente;
-        this.emitChanged(this);
+        this.store.onNodeChanged(this);
     }
 }

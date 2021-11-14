@@ -43,7 +43,8 @@ export default {
                 this.nodeDependencies[newNode.name] = nodesArray.filter(newNode.dependsOn).map(aNode => aNode[0]);
             }
         }
-        newNode.emitChanged = this.onNodeChanged;
+        // nodes have a handle to the store !
+        newNode.store = this;
 
         // todo: add ascending and descending props to the output object
     },
@@ -55,10 +56,10 @@ export default {
             // copy new val to output
             //Object.assign(this.output[nodeName], node.outputVal);
             //this.output[nodeName] = _.cloneDeep(node.outputVal);
-            this.output[nodeName] = JSON.parse(JSON.stringify(node.outputVal));
+            this.output[node.name] = JSON.parse(JSON.stringify(node.outputVal));
 
             // start traversing from node, if we're not already traversing
-            this.fullTraversal(this.nodeNamesInOrderOfAddition.findIndex(el => el === nodeName))
+            this.fullTraversal(this.nodeNamesInOrderOfAddition.findIndex(el => el === node.name))
         }
     },
 
@@ -93,7 +94,7 @@ export default {
                                 value: JSON.parse(JSON.stringify(this.output[this.nodeDependencies[currNode][j]])), 
                                 configurable: false,
                                 enumerable:true,
-                                writable: false 
+                                writable: true 
                             }
                         );
                         // In listeOptionsChoisis, I couldn't do Object.entries on this object, so try going back to an array.

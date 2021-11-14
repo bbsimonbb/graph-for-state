@@ -1,6 +1,6 @@
 export default {
     name:'listeOptionsChoisis',    
-    emitChanged(){},
+    store:{},
     d:{},
     // I depend on everything that has an optionName
     // I am called with a 2 item array. 1st item is the name, second is the node

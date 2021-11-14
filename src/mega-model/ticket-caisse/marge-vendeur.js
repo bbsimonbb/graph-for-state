@@ -1,6 +1,6 @@
 export default {
     name:'margeVendeur',    
-    emitChanged(){},
+    store:{},
     d:{},
     dependsOn:['prixProduit','prixRemise', 'dimensions'],
     outputVal:{

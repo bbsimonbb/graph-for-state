@@ -1,6 +1,6 @@
 export default {
     name:'typeCoteDormantHabillage',    
-    emitChanged(){},
+    store:{},
     d:{},
     outputVal:{
         optionGroupName:"typeCoteDormantHabillage",

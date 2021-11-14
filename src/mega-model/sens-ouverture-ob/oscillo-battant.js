@@ -27,7 +27,7 @@ export default {
     selectItem(index) {
         this.outputVal.selectedIndex = index;
         this.recalculate();
-        this.emitChanged(this);
+        this.store.onNodeChanged(this);
     },
     recalculate() {
         if(this.outputVal.selectedIndex === 0)

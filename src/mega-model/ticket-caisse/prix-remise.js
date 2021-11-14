@@ -1,6 +1,6 @@
 export default {
     name:'prixRemise',    
-    emitChanged(){},
+    store:{},
     d:{},
     dependsOn: ['prixProduit'],
     prixDeVenteAvantRemise: 0,
@@ -20,12 +20,12 @@ export default {
     setRemiseUnitaire(e) {
         this.remiseUnitaire = parseFloat(e.target.value);
         this.recalculate();
-        this.emitChanged(this);
+        this.store.onNodeChanged(this);
     },
     setRemisePct(e) {
         this.remisePct = parseFloat(e.target.value) / 100;
         this.recalculate();
-        this.emitChanged(this);
+        this.store.onNodeChanged(this);
     },
     recalculate() {
             this.outputVal.remiseUnitaire= this.remiseUnitaire,

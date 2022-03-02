@@ -2,10 +2,11 @@ export default {
     name:'tvaTotalTtc',    
     store:{},
     d:{},
-    dependsOn:['prixRemise'],
+    dependsOn:['prixRemise', 'dimensions'],
     outputVal:{
         tauxTva:.2,
-        totalTtc:0
+        totalTtc:0,
+        totalHt:0
     },
     onUpstreamChange(){
         this.recalculate();
@@ -17,6 +18,7 @@ export default {
         this.store.onNodeChanged(this);
     },
     recalculate(){        
-        this.outputVal.totalTtc = (this.outputVal.tauxTva +1 ) * this.d.prixRemise.prixDeVenteClient;
+        this.outputVal.totalHt = this.d.prixRemise.prixDeVenteClient * this.d.dimensions.quantite;
+        this.outputVal.totalTtc = (this.outputVal.tauxTva +1 ) * this.outputVal.totalHt;
     }
 }

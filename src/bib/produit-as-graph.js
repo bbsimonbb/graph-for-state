@@ -28,6 +28,7 @@ import prixRemise from "../mega-model/ticket-caisse/prix-remise"
 import margeVendeur from "../mega-model/ticket-caisse/marge-vendeur"
 import tvaTotalTtc from "../mega-model/ticket-caisse/tva-total-ttc"
 import ui from "../mega-model/ui"
+import activeOptionsForTypeahead from "../mega-model/active-options-for-typeahead"
 
 
 
@@ -63,6 +64,7 @@ export default function () {
 
     // reporting nodes added after options
     graph.addNode(listeOptionsChoisis);
+    graph.addNode(activeOptionsForTypeahead);
 
     // then all the totals that depend
     graph.addNode(prixProduit);

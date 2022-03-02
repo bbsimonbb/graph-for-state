@@ -1,5 +1,5 @@
 export default {
-    name:'listeOptionsChoisis',    
+    name:'activeOptions4Typeahead',    
     store:{},
     d:{},
     /* --------------- Reporting Node -----------------------
@@ -14,22 +14,19 @@ export default {
         totalPrice: 0 
     },
 
-    // My output is an array of strings of selected option values
     onUpstreamChange() {
         const optionsArray = Object.entries(this.d);
 
-        var liste = [], totalPrice = 0;
+        var liste = [];
         optionsArray.forEach(([n,o])=>{
             try {
-                liste.push(o.optionValues[o.selectedIndex].valueName)
+                liste.push(o.optionName)
             }
             catch (ex) {
-                console.log("ex recovering selected option\n" + ex)
+                console.log("ex adding option\n" + ex)
             }
-            totalPrice += o.optionPrice;
         })
         this.outputVal.liste = liste;
-        this.outputVal.totalPrice = totalPrice;
         return true;
     }
 }

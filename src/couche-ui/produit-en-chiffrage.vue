@@ -3,6 +3,7 @@ import dimensionsEtQuantite from './dimensions-et-quantite.vue';
 import optionGroup from './option-group.vue'
 import option from './option.vue'
 import ticketCaisse from './ticket-caisse/ticket-caisse.vue';
+import typeAhead from './type-ahead.vue'
 
 
 export default {
@@ -17,13 +18,15 @@ export default {
         'dimensions-et-quantite': dimensionsEtQuantite,
         'elcia-option-group': optionGroup,
         'elcia-option': option,
-        'ticket-caisse': ticketCaisse
+        'ticket-caisse': ticketCaisse,
+        'type-ahead': typeAhead
     },
 }
 
 </script>
 <template>
     <div>
+        <type-ahead></type-ahead>
         <div class="loader" style="display:none;">
             <i class="custom-gif mypricer"></i>
             <span class="sr-only">...</span>
@@ -225,13 +228,13 @@ export default {
                                 <div class="col-2">
                                     <div style="display:flex">
                                         <img
-                                            alt="United States"
+                                            alt="Français"
                                             src="http://purecatamphetamine.github.io/country-flag-icons/3x2/FR.svg"
                                             style="height:20px"
                                             @click="$i18n.locale = 'fr'"
                                         />
                                         <img
-                                            alt="United States"
+                                            alt="English"
                                             src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"
                                             style="height:20px"
                                             @click="$i18n.locale = 'en'"

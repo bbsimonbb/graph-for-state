@@ -373,7 +373,7 @@ export default {
                 <span>{{$t("quantité")}}</span>
             </div>
             <div class="value">
-                <span>1</span>
+                <span>{{bibState.dimensions.quantite}}</span>
             </div>
         </div>
         <div class="key-value">
@@ -381,7 +381,7 @@ export default {
                 <span>{{$t("totalHT")}}</span>
             </div>
             <div class="value">
-                <span>{{$eur(bibState.prixRemise.prixDeVenteClient)}}</span>
+                <span>{{$eur(bibState.tvaTotalTtc.totalHt)}}</span>
             </div>
         </div>
         <div class="key-value">

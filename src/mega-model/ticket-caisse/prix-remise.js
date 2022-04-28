@@ -28,8 +28,8 @@ export default {
         this.store.onNodeChanged(this);
     },
     recalculate() {
-            this.outputVal.remiseUnitaire= this.remiseUnitaire,
-            this.outputVal.remisePct= this.remisePct,
-            this.outputVal.prixDeVenteClient = (this.prixDeVenteAvantRemise - this.remiseUnitaire) * (1 - this.remisePct)
+            this.outputVal.remiseUnitaire= this.remiseUnitaire;
+            this.outputVal.remisePct= this.remisePct;
+            this.outputVal.prixDeVenteClient = (this.prixDeVenteAvantRemise - this.remiseUnitaire) * (1 - this.remisePct);
     }
 }

@@ -178,7 +178,7 @@ export default {
 
                     <div class="section">
                         <div class="title">
-                            <span>{{$t("Vente")}}</span>
+                            <span>{{$t("vente")}}</span>
                         </div>
 
                         <div class="content">

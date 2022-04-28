@@ -949,7 +949,7 @@ export default {
                                                 tabindex="-1"
                                                 type="submit"
                                             >
-                                                <i class="plus-circle">Ajouter ce produit</i>
+                                                <i class="plus-circle">{{$t("ajouterCeProduit")}}</i>
                                             </button>
                                         </div>
                                     </div>

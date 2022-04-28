@@ -125,4 +125,6 @@ export default {
     tauxTvaPct: "VAT rate (%)",
     totalTtc: "Total with VAT",
 
+    ajouterCeProduit: "Add this product",
+
 }

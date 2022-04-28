@@ -132,6 +132,8 @@ TriplevitrageVIR415WarmEdgeargon415WarmEdgeargon442VIR:"Triple vitrage VIR 4/15 
 TriplevitrageVIR414WarmEdgeargon414WarmEdgeargonSP10VIR: "Triple vitrage VIR 4/14 Warm Edge + argon/4/14 Warm Edge + argon/SP10 VIR",
 TriplevitrageVIR44212WarmEdgeargon412WarmEdgeargon442VIR: "Triple vitrage VIR 44.2/12 Warm Edge + argon/4/12 Warm Edge + argon/44.2 VIR",
 
+ajouterCeProduit: "Ajouter ce produit",
+
 
 
 

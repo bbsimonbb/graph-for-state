@@ -1,12 +1,14 @@
 export default {
-    name:'conditionsAchatVente',    
+    name:'conditionsAchatVente',
     store:{},
     outputVal: {
         remise: .4,
-        coefficientVente: 2
+        coefficientVente: 2,
+        coefficientVenteEnSaisie: '2'
     },
     setCoefficient(e){
-        this.outputVal.coefficientVente = parseFloat(e.target.value) || 0;
+        this.outputVal.coefficientVenteEnSaisie = e.target.value;
+        this.outputVal.coefficientVente = parseFloat(this.outputVal.coefficientVenteEnSaisie) || 0;
         this.store.onNodeChanged(this);
     }
 }

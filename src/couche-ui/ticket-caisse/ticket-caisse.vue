@@ -217,7 +217,7 @@ export default {
                                             class="saleCoefficient"
                                             maxlength="5"
                                             type="text"
-                                            :value="bibState.conditionsAchatVente.coefficientVente"
+                                            :value="bibState.conditionsAchatVente.coefficientVenteEnSaisie"
                                             @input="bib.nodes.conditionsAchatVente.setCoefficient"
                                         />
                                     </div>

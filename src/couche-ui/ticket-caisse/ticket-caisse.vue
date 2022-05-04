@@ -106,7 +106,7 @@ export default {
                                             type="hidden"
                                             value
                                         />
-                                        <button class="dropdown-toggle">
+                                        <button class="dropdown-toggle" disabled>
                                             <div class="dropdown-text">
                                                 <span>Par défaut</span>
                                             </div>

@@ -59,7 +59,7 @@ export default {
                                     name="Quotation.Header.BtnGoToRangeSelection"
                                     tabindex="-1"
                                     title="Menuiseries"
-                                    type="submit"
+                                    type="submit" disabled
                                 >
                                     <div class="wizard-title" data-number="2">
                                         <span>{{ $t("choixFamille") }}</span>
@@ -77,7 +77,7 @@ export default {
                                     name="Quotation.Header.BtnGoToProductSelection"
                                     tabindex="-1"
                                     title="Fenêtre 2 vantaux"
-                                    type="submit"
+                                    type="submit" disabled
                                 >
                                     <div class="wizard-title" data-number="3">
                                         <span>{{ $t("choixProduit") }}</span>
@@ -120,7 +120,7 @@ export default {
                                                 id="BtnTechnicalValidation"
                                                 name="Quotation.BtnTechnicalValidation"
                                                 tabindex="-1"
-                                                type="submit"
+                                                type="submit" disabled
                                             ></button>
 
                                             <input
@@ -167,7 +167,7 @@ export default {
                                                     class="second"
                                                     name="Quotation.ProductImageModel.BtnOpenPopup"
                                                     tabindex="-1"
-                                                    type="submit"
+                                                    type="submit" disabled
                                                 >
                                                     <i class="picture-o"></i>
                                                     {{ $t("voirMonProduit") }}
@@ -180,7 +180,7 @@ export default {
                                                     class="second"
                                                     name="Quotation.ObservationModel.BtnOpenPopup"
                                                     tabindex="-1"
-                                                    type="submit"
+                                                    type="submit" disabled
                                                 >
                                                     <i class="comment-o"></i>
                                                     {{ $t("ajoutObservations") }}
@@ -261,7 +261,7 @@ export default {
                                                 class
                                                 name="Quotation.ProductImageModel.BtnOpenPopup"
                                                 tabindex="-1"
-                                                type="submit"
+                                                type="submit" disabled
                                             >
                                                 <div
                                                     class="lego-image"
@@ -947,7 +947,7 @@ export default {
                                                 class="main"
                                                 name="Quotation.BtnSave"
                                                 tabindex="-1"
-                                                type="submit"
+                                                type="submit" disabled
                                             >
                                                 <i class="plus-circle">{{$t("ajouterCeProduit")}}</i>
                                             </button>

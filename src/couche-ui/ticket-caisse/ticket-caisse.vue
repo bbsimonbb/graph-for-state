@@ -20,7 +20,7 @@ export default {
                     value="True"
                     class="accordion-item-heading product-headingopened"
                     name="Quotation.SummaryModel.BtnToggleProduct"
-                    type="submit"
+                    type="submit" disabled
                 >
                     <div class="accordion-item-title">
                         <div>
@@ -47,7 +47,7 @@ export default {
                     value="True"
                     class="accordion-item-heading base-pricing-heading opened"
                     name="Quotation.SummaryPricingModel.BtnToogleConditions"
-                    type="submit"
+                    type="submit" disabled
                 >
                     <div class="accordion-item-title">
                         <i class="minus-square"></i>Conditions
@@ -97,7 +97,7 @@ export default {
                                             id="BtnSelectPurchaseWorkSite"
                                             name="Quotation.SummaryPricingModel.BtnSelectPurchaseWorkSite"
                                             tabindex="-1"
-                                            type="submit"
+                                            type="submit" disabled
                                         ></button>
 
                                         <input
@@ -133,7 +133,7 @@ export default {
                                 id="BtnChangeDiscount0"
                                 name="Quotation.SummaryPricingModel.PurchasePricings[0].BtnChangeDiscount"
                                 tabindex="-1"
-                                type="submit"
+                                type="submit" disabled
                             ></button>
                             <div class="title">
                                 <span>{{$t(bibState.gamme.optionValues[bibState.gamme.selectedIndex].valueName)}}</span>
@@ -189,7 +189,7 @@ export default {
                                 id="BtnChangePricing0"
                                 name="Quotation.SummaryPricingModel.SalePricings[0].BtnChangePricing"
                                 tabindex="-1"
-                                type="submit"
+                                type="submit" disabled
                             ></button>
                             <div class="title">
                                 <span>{{$t(bibState.gamme.optionValues[bibState.gamme.selectedIndex].valueName)}}</span>
@@ -248,7 +248,7 @@ export default {
                             id="BtnChangeCustomerSaleUnitaryDiscount"
                             name="Quotation.SummaryPricingModel.CustomerSaleModel.BtnChangeCustomerSaleUnitaryDiscount"
                             tabindex="-1"
-                            type="submit"
+                            type="submit" disabled
                         ></button>
                         <button
                             value="True"
@@ -257,7 +257,7 @@ export default {
                             id="BtnChangeCustomerSalePercentageDiscount"
                             name="Quotation.SummaryPricingModel.CustomerSaleModel.BtnChangeCustomerSalePercentageDiscount"
                             tabindex="-1"
-                            type="submit"
+                            type="submit" disabled
                         ></button>
                         <button
                             value="True"
@@ -266,7 +266,7 @@ export default {
                             id="BtnChangeCustomerSalePrice"
                             name="Quotation.SummaryPricingModel.CustomerSaleModel.BtnChangeCustomerSalePrice"
                             tabindex="-1"
-                            type="submit"
+                            type="submit" disabled
                         ></button>
 
                         <div class="title">
